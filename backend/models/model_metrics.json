@@ -1,0 +1,105 @@
+{
+  "selected_model": "Random Forest",
+  "trained_at": "2026-09-29T03:36:41.034286+00:00",
+  "dataset_samples": 483,
+  "train_samples": 386,
+  "test_samples": 97,
+  "best_metrics": {
+    "model_name": "Random Forest",
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": {
+      "true_negatives": 42,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_positives": 55
+    }
+  },
+  "all_models_benchmark": [
+    {
+      "model_name": "Logistic Regression",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "true_negatives": 42,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "true_positives": 55
+      }
+    },
+    {
+      "model_name": "Decision Tree",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "true_negatives": 42,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "true_positives": 55
+      }
+    },
+    {
+      "model_name": "Random Forest",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "true_negatives": 42,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "true_positives": 55
+      }
+    },
+    {
+      "model_name": "Gradient Boosting",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "true_negatives": 42,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "true_positives": 55
+      }
+    }
+  ],
+  "feature_importance": {
+    "is_https": 0.3145,
+    "brand_doppelganger": 0.1373,
+    "has_suspicious_keywords": 0.1247,
+    "hostname_length": 0.0801,
+    "url_length": 0.049,
+    "path_length": 0.0437,
+    "num_hyphens": 0.0437,
+    "has_digit_substitution": 0.029,
+    "num_dots": 0.028,
+    "num_subdomains": 0.026,
+    "num_digits": 0.0255,
+    "digit_ratio": 0.0252,
+    "suspicious_tld": 0.0209,
+    "url_entropy": 0.0199,
+    "num_slashes": 0.0131,
+    "path_has_brand_mismatch": 0.0065,
+    "is_ip_address": 0.0055,
+    "is_shortened": 0.0053,
+    "num_equal_signs": 0.0008,
+    "num_underscores": 0.0006,
+    "query_length": 0.0004,
+    "num_question_marks": 0.0002,
+    "num_at_symbols": 0.0002,
+    "has_punycode_idn": 0.0
+  }
+}
