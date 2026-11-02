@@ -1207,3 +1207,184 @@ body {
     font-size: 14px;
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   TRUSTLENS v2.0 — Message Analysis Component Styles
+   Appended to existing SOC theme. Do not remove existing classes.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Container for all result sections */
+.message-result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+/* Evidence items — left-border colour set per severity in JSX */
+.evidence-item {
+  border-radius: 6px;
+  padding: 12px 14px;
+  transition: background 0.15s;
+}
+
+.evidence-item.high {
+  border-left: 3px solid var(--cyber-crimson);
+}
+
+.evidence-item.medium {
+  border-left: 3px solid var(--vibrant-amber);
+}
+
+.evidence-item.low {
+  border-left: 3px solid var(--terminal-green);
+}
+
+/* Evidence monospace quote box */
+.evidence-quote {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 8px 10px;
+  color: var(--text-secondary);
+  word-break: break-all;
+  white-space: pre-wrap;
+  user-select: text;
+}
+
+/* Small severity label badge */
+.severity-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Identity analysis row dividers */
+.identity-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.identity-status-row:last-child {
+  border-bottom: none;
+}
+
+/* Social engineering category header */
+.se-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  width: 100%;
+}
+
+/* Recommendation list item */
+.recommendation-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  background: rgba(30, 144, 255, 0.04);
+  border: 1px solid rgba(30, 144, 255, 0.12);
+  border-radius: 6px;
+}
+
+/* URL plain text display (NOT a link — security requirement) */
+.url-plain-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  word-break: break-all;
+  white-space: normal;
+  user-select: text;
+  cursor: text;
+}
+
+/* Message input form enhancements */
+.message-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.message-form-field label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.message-form-field input,
+.message-form-field select,
+.message-form-field textarea {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.message-form-field input:focus,
+.message-form-field select:focus,
+.message-form-field textarea:focus {
+  border-color: var(--electric-blue);
+}
+
+/* Channel toggle buttons */
+.channel-toggle-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.channel-toggle-btn {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+}
+
+.channel-toggle-btn.active-email {
+  border-color: var(--electric-blue);
+  background: rgba(30, 144, 255, 0.1);
+  color: var(--electric-blue);
+}
+
+.channel-toggle-btn.active-sms {
+  border-color: var(--terminal-green);
+  background: rgba(0, 255, 102, 0.08);
+  color: var(--terminal-green);
+}

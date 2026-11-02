@@ -1,0 +1,141 @@
+{
+  "selected_model": "Linear SVM (char TF-IDF)",
+  "trained_at": "2026-10-30T23:00:20.538850+00:00",
+  "dataset_samples": 602,
+  "train_samples": 481,
+  "test_samples": 121,
+  "label_distribution": {
+    "total_benign": 302,
+    "total_suspicious": 300
+  },
+  "best_metrics": {
+    "model_name": "Linear SVM (char TF-IDF)",
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "false_positive_rate": 0.0,
+    "confusion_matrix": {
+      "true_negatives": 61,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_positives": 60
+    }
+  },
+  "all_models_benchmark": [
+    {
+      "model_name": "Logistic Regression (char TF-IDF)",
+      "accuracy": 0.9752,
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1_score": 0.9744,
+      "roc_auc": 0.9995,
+      "false_positive_rate": 0.0,
+      "confusion_matrix": {
+        "true_negatives": 61,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "true_positives": 57
+      }
+    },
+    {
+      "model_name": "Complement NB (char TF-IDF)",
+      "accuracy": 0.9752,
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1_score": 0.9744,
+      "roc_auc": 0.9989,
+      "false_positive_rate": 0.0,
+      "confusion_matrix": {
+        "true_negatives": 61,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "true_positives": 57
+      }
+    },
+    {
+      "model_name": "Linear SVM (char TF-IDF)",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "false_positive_rate": 0.0,
+      "confusion_matrix": {
+        "true_negatives": 61,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "true_positives": 60
+      }
+    },
+    {
+      "model_name": "Logistic Regression (word TF-IDF)",
+      "accuracy": 0.9752,
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1_score": 0.9744,
+      "roc_auc": 0.9997,
+      "false_positive_rate": 0.0,
+      "confusion_matrix": {
+        "true_negatives": 61,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "true_positives": 57
+      }
+    }
+  ],
+  "subset_evaluation": [
+    {
+      "subset": "email_english",
+      "samples": 26,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "subset": "email_hindi",
+      "samples": 16,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "subset": "email_kannada",
+      "samples": 16,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "subset": "sms_english",
+      "samples": 20,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "subset": "sms_hindi",
+      "samples": 26,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "subset": "sms_kannada",
+      "samples": 17,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    }
+  ],
+  "vectorizer": "char_wb TF-IDF ngram(2,5)",
+  "limitations": [
+    "Trained primarily on synthetic data. Performance on real-world messages may differ.",
+    "Hindi and Kannada performance depends on sufficient Indic training samples.",
+    "Model may not generalize well to attack patterns not present in training data.",
+    "Public spam datasets (if used) are not equivalent to confirmed phishing datasets.",
+    "This is a suspiciousness assessment, not a deterministic phishing verdict."
+  ],
+  "timestamp": "2026-10-30T23:00:20.539470+00:00"
+}

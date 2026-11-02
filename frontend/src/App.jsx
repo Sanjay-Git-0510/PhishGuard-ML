@@ -8,8 +8,9 @@ import AssetPriorityCards from './components/AssetPriorityCards';
 import LogIngestionFeed from './components/LogIngestionFeed';
 import ModelTelemetry from './components/ModelTelemetry';
 import BatchScanner from './components/BatchScanner';
+import MessageAnalysis from './pages/MessageAnalysis';
 import { checkHealth, predictUrl, getModelInfo, getScanHistory } from './services/api';
-import { ShieldCheck, AlertCircle } from 'lucide-react';
+import { ShieldCheck, AlertCircle, Info } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('scanner');
@@ -190,6 +191,58 @@ export default function App() {
           {/* Tab 5: Batch Scanner */}
           {activeTab === 'batch' && (
             <BatchScanner onInspect={handleInspectFromHistory} />
+          )}
+
+          {/* Tab 6: Message Analysis (Email / SMS) */}
+          {activeTab === 'message' && (
+            <MessageAnalysis />
+          )}
+
+          {/* Tab 7: About / How It Works */}
+          {activeTab === 'about' && (
+            <div className="soc-panel" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div className="soc-panel-header">About TRUSTLENS</div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.7', margin: 0 }}>
+                  <strong style={{ color: 'var(--text-primary)' }}>TRUSTLENS</strong> is an AI/ML-based
+                  cybersecurity detection assistant for phishing URLs, suspicious emails, SMS messages,
+                  identity impersonation and social-engineering attacks. All analysis is performed locally
+                  using traditional machine learning — no external AI APIs are used.
+                </p>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+                  {[
+                    { title: 'URL Scanner', desc: 'ML-powered phishing URL detection with 30+ extracted features.', color: 'var(--electric-blue)' },
+                    { title: 'Email Analysis', desc: 'Detects suspicious language, identity mismatches and credential harvesting.', color: 'var(--vibrant-amber)' },
+                    { title: 'SMS Analysis', desc: 'English and Kannada SMS spam detection with social engineering signals.', color: 'var(--terminal-green)' },
+                    { title: 'Identity Trust', desc: 'Reply-To mismatch, domain lookalike detection and sender consistency checks.', color: 'var(--cyber-crimson)' },
+                    { title: 'Evidence-Based', desc: 'Every finding shows exact text excerpts and detailed explanations.', color: 'var(--electric-blue)' },
+                    { title: 'Airgap Safe', desc: 'No links are opened. No data leaves your system. Fully static analysis.', color: 'var(--terminal-green)' },
+                  ].map((card, i) => (
+                    <div key={i} style={{
+                      background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-subtle)',
+                      borderTop: `2px solid ${card.color}`, borderRadius: '6px', padding: '14px',
+                    }}>
+                      <div style={{ fontSize: '13px', fontWeight: '700', color: card.color, marginBottom: '6px' }}>{card.title}</div>
+                      <div style={{ fontSize: '12px', color: 'var(--text-muted)', lineHeight: '1.5' }}>{card.desc}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{
+                  background: 'rgba(30,144,255,0.05)', border: '1px solid rgba(30,144,255,0.15)',
+                  borderRadius: '6px', padding: '14px', fontSize: '12px', color: 'var(--text-muted)', lineHeight: '1.6',
+                }}>
+                  <strong style={{ color: 'var(--electric-blue)' }}>Technology Stack:</strong>{' '}
+                  React 19 · FastAPI · scikit-learn · Pandas · NumPy · SQLite · Joblib
+                  <br />
+                  <strong style={{ color: 'var(--electric-blue)' }}>Languages supported:</strong> English · Kannada · Code-mixed
+                  <br />
+                  <strong style={{ color: 'var(--electric-blue)' }}>Version:</strong> TRUSTLENS v2.0.0
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </main>

@@ -1,0 +1,38 @@
+{
+  "Demo Bank": {
+    "display_names": ["Demo Bank", "DemoBank", "Demo Bank Ltd", "Demo Bank Customer Care"],
+    "email_domains": ["demobank.example", "mail.demobank.example"],
+    "sms_sender_ids": ["DEMOBANK", "DEMOBK"],
+    "official_website": "https://www.demobank.example",
+    "official_phone": "+91-1800-000-0001"
+  },
+  "Demo University": {
+    "display_names": ["Demo University", "DemoUni", "Demo University Admissions"],
+    "email_domains": ["demouniversity.example", "mail.demouniversity.example"],
+    "sms_sender_ids": ["DEMOUNI", "DEMOUNIV"],
+    "official_website": "https://www.demouniversity.example",
+    "official_phone": "+91-1800-000-0002"
+  },
+  "Demo Insurance": {
+    "display_names": ["Demo Insurance", "DemoInsure", "Demo Insurance Services"],
+    "email_domains": ["demoinsurance.example"],
+    "sms_sender_ids": ["DEMOINS"],
+    "official_website": "https://www.demoinsurance.example",
+    "official_phone": "+91-1800-000-0003"
+  },
+  "Demo Delivery": {
+    "display_names": ["Demo Delivery", "DemoCourier", "Demo Logistics"],
+    "email_domains": ["demodelivery.example", "courier.demodelivery.example"],
+    "sms_sender_ids": ["DEMODLV", "DEMOCOURIER"],
+    "official_website": "https://www.demodelivery.example",
+    "official_phone": "+91-1800-000-0004"
+  },
+  "Demo Telecom": {
+    "display_names": ["Demo Telecom", "DemoTel", "Demo Mobile Services"],
+    "email_domains": ["demotelecom.example"],
+    "sms_sender_ids": ["DEMOTEL", "DEMOMOB"],
+    "official_website": "https://www.demotelecom.example",
+    "official_phone": "+91-1800-000-0005"
+  }
+}
+

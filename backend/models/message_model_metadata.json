@@ -1,0 +1,8 @@
+{
+  "selected_model": "Linear SVM (char TF-IDF) \u2014 feedback-retrained",
+  "trained_at": "2026-10-30T23:00:29.960879+00:00",
+  "total_samples": 674,
+  "feedback_samples": 9,
+  "test_accuracy": 1.0,
+  "retrained": true
+}

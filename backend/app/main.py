@@ -1,8 +1,10 @@
 """
-FastAPI Application Entry Point
--------------------------------
-Phishing URL Detection System - Machine Learning Backend
-Static URL Analysis Engine
+TRUSTLENS — FastAPI Application Entry Point
+---------------------------------------------
+Phishing, Impersonation and Social Engineering Detection System
+Extends the original Phishing URL Detection backend.
+
+Analysis type: Static only — no outbound requests, no URL visits.
 """
 
 import logging
@@ -12,42 +14,62 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.core.config import settings
-from app.api.endpoints import router as api_router
+from app.api.endpoints import router as url_router
+from app.api.message_routes import router as message_router
+from app.api.feedback_routes import router as feedback_router
 from app.ml.predictor import get_predictor
+from app.modules.message_analysis.predictor import get_message_predictor
 
-# Configure secure logging (no sensitive user data logged)
+# Configure secure logging — no sensitive user data logged
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
 )
-logger = logging.getLogger("phishing_detection_api")
+logger = logging.getLogger("trustlens_api")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Warm up ML model on startup to ensure instant zero-latency inference."""
-    logger.info("Initializing static ML prediction engine...")
+    """Warm up ML models on startup for zero-latency inference."""
+    logger.info("Initializing TRUSTLENS static analysis engine...")
+
+    # Load existing URL model
     try:
-        predictor = get_predictor()
-        logger.info(f"Loaded trained model: {predictor.model_metrics.get('selected_model', 'scikit-learn')}")
+        url_predictor = get_predictor()
+        logger.info(f"URL model loaded: {url_predictor.model_metrics.get('selected_model', 'scikit-learn')}")
     except Exception as e:
-        logger.error(f"Failed to load ML model artifact: {e}")
+        logger.error(f"Failed to load URL model: {e}")
+
+    # Load message model (graceful if not yet trained)
+    try:
+        msg_predictor = get_message_predictor()
+        if msg_predictor.model_available:
+            logger.info("Message classification model loaded successfully.")
+        else:
+            logger.warning(
+                "Message model not found. ML classification will use rule-based fallback. "
+                "Run backend/ml/train_message_model.py to enable genuine ML classification."
+            )
+    except Exception as e:
+        logger.error(f"Message model initialization error: {e}")
+
+    logger.info("TRUSTLENS is ready.")
     yield
-    logger.info("Shutting down Phishing URL Detection API...")
+    logger.info("Shutting down TRUSTLENS API...")
 
 
 app = FastAPI(
-    title=settings.PROJECT_NAME,
+    title="TRUSTLENS",
     description=(
-        "Production-grade Machine Learning API for Static Phishing URL Detection. "
-        "Strictly performs static lexical and structural analysis without executing or visiting target destinations."
+        "Phishing, Impersonation and Social Engineering Detection System. "
+        "Performs static security analysis. Does not open submitted links, "
+        "send messages, or perform actions on behalf of users."
     ),
-    version="1.0.0",
+    version="2.0.0",
     lifespan=lifespan,
 )
 
 # CORS Configuration
-# Prevents arbitrary origin access in production; allows configured dashboard origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.BACKEND_CORS_ORIGINS,
@@ -70,22 +92,30 @@ async def add_security_headers(request: Request, call_next):
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
-    logger.error(f"Unhandled exception at {request.url.path}: {str(exc)}")
+    logger.error(f"Unhandled exception at {request.url.path}: {type(exc).__name__}")
     return JSONResponse(
         status_code=500,
-        content={"detail": "An internal error occurred during static URL analysis."}
+        content={"detail": "An internal error occurred during analysis."}
     )
 
 
-# Register API routes under /api
-app.include_router(api_router, prefix=settings.API_V1_STR)
+# Register all API routes under /api
+app.include_router(url_router, prefix=settings.API_V1_STR)
+app.include_router(message_router, prefix=settings.API_V1_STR)
+app.include_router(feedback_router, prefix=settings.API_V1_STR)
 
 
 @app.get("/", tags=["Root"])
 def root_status():
     return {
-        "service": settings.PROJECT_NAME,
+        "service": "TRUSTLENS",
+        "version": "2.0.0",
         "status": "online",
-        "analysis_type": "static_url_only",
+        "description": "Phishing, Impersonation and Social Engineering Detection System",
+        "analysis_type": "static_only",
+        "privacy_notice": (
+            "TRUSTLENS performs static security analysis. "
+            "It does not open submitted links, send messages or perform actions on your behalf."
+        ),
         "docs_url": "/docs",
     }

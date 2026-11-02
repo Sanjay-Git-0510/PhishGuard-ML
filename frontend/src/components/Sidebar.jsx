@@ -5,16 +5,20 @@ import {
   Activity, 
   Cpu, 
   Layers, 
-  Server
+  Server,
+  Mail,
+  Info,
 } from 'lucide-react';
 
 export default function Sidebar({ activeTab, onSelectTab, health }) {
   const navItems = [
-    { id: 'scanner', label: 'Enter URL & Predict', icon: Radar, badge: 'MAIN' },
+    { id: 'scanner', label: 'URL Threat Scanner', icon: Radar, badge: 'URL' },
+    { id: 'message', label: 'Message Analysis', icon: Mail, badge: 'NEW' },
     { id: 'heatmap', label: 'Vulnerability Matrix', icon: Layers },
     { id: 'logs', label: 'Ingestion Feed & Audit', icon: Activity },
     { id: 'model', label: 'Model Intelligence', icon: Cpu },
     { id: 'batch', label: 'Batch Static Analysis', icon: Server },
+    { id: 'about', label: 'About / How It Works', icon: Info },
   ];
 
   return (
@@ -25,8 +29,8 @@ export default function Sidebar({ activeTab, onSelectTab, health }) {
             <ShieldCheck size={20} />
           </div>
           <div>
-            <div className="brand-title">AEGIS // THREAT</div>
-            <span className="brand-badge">SOC ML-FEED v1.0</span>
+            <div className="brand-title">TRUSTLENS</div>
+            <span className="brand-badge">v2.0 · TRUSTLENS</span>
           </div>
         </div>
 

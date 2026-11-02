@@ -14,7 +14,7 @@ def test_root_endpoint():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "online"
-    assert data["analysis_type"] == "static_url_only"
+    assert data["analysis_type"] == "static_only"
 
 
 def test_health_endpoint():

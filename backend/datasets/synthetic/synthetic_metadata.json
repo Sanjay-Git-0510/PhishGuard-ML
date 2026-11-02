@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-10-30T23:00:18.165196+00:00",
+  "total_samples": 600,
+  "distribution": {
+    "benign": 300,
+    "suspicious": 300,
+    "by_channel_language": {
+      "email_english": {
+        "benign": 50,
+        "suspicious": 50
+      },
+      "email_hindi": {
+        "benign": 50,
+        "suspicious": 50
+      },
+      "email_kannada": {
+        "benign": 50,
+        "suspicious": 50
+      },
+      "sms_english": {
+        "benign": 50,
+        "suspicious": 50
+      },
+      "sms_hindi": {
+        "benign": 50,
+        "suspicious": 50
+      },
+      "sms_kannada": {
+        "benign": 50,
+        "suspicious": 50
+      }
+    }
+  },
+  "schema_version": "1.0",
+  "source": "TRUSTLENS_SYNTHETIC_v1",
+  "note": "This dataset is synthetically generated for training purposes. All organization names are fictional. All domains use .example TLD. Do not use for production decisions without human review."
+}
